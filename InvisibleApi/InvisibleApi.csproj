@@ -13,6 +13,9 @@
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/hassanhabib/InvisibleApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hassanhabib/InvisibleApi</RepositoryUrl>
+    <Copyright>Copyright (c) Hassan Habib</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
