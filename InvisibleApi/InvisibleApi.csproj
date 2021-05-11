@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Hassan Habib</Authors>
+    <Company>Hassan Habib</Company>
+    <Description>InvisibleApi is a .NET Standard library developed to add an extra layer of security to protect your existing API endpoints from scanning or discovery, especially if they were developed for internal use only.</Description>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageIcon>api.png</PackageIcon>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>InvisibleApi</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Resources\api.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
