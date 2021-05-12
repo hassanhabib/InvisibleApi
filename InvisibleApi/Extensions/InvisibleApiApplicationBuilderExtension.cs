@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using InvisibleApi.Middlewares;
 using InvisibleApi.Models.InvisibleApiConfigurations;
+using InvisibleApi.Models.InvisibleApiProfiles;
 using Microsoft.AspNetCore.Builder;
 
 namespace InvisibleApi.Extensions
@@ -14,8 +15,9 @@ namespace InvisibleApi.Extensions
     public static class InvisibleApiApplicationBuilderExtension
     {
         public static IApplicationBuilder UseInvisibleApis(
-            this IApplicationBuilder app, 
-            List<InvisibleApiConfiguration> invisibleApiDetails) =>
-                app.UseMiddleware<InvisibleApiMiddleware>(invisibleApiDetails);
+            this IApplicationBuilder app,
+            List<InvisibleApiConfiguration> invisibleApiDetails,
+            List<InvisibleApiProfile> invisibleApiProfiles) =>
+                app.UseMiddleware<InvisibleApiMiddleware>(invisibleApiDetails, invisibleApiProfiles);
     }
 }

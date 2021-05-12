@@ -50,31 +50,57 @@ First of all make sure you navigate and install InvisibleApi from nuget.org or f
 ### Setting Up InvisibleApi Configurations
 When I designed this library, I wanted to allow engineers to have all their invisible APIs configurations sitting in one place so its easier to manage, here's you you can do that:
 
-In your `Startup.cs` file go ahead and add your invisible apis configurations as follows:
+In your `Startup.cs` file go ahead and add your invisible apis configurations or profiles as follows:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
         ...
-            app.UseInvisibleApis(new List<InvisibleApiConfiguration>
-            {
-                new InvisibleApiConfiguration
+            app.UseInvisibleApis(
+                new List<InvisibleApiConfiguration>
                 {
-                    Endpoint = "/api/home",
-                    Header = "Hush",
-                    Value = "I'm a good guy",
-                    HttpVerb = "GET"
-                }
-            });
-
+                    new InvisibleApiConfiguration
+                    {
+                        Endpoint = "/api/students",
+                        HttpVerb = "DELETE",
+                        Header = "SuperSecretHeader",
+                        Value = "SuperSecretValue"
+                    }
+                },
+                new List<InvisibleApiProfile>
+                {
+                    new InvisibleApiProfile
+                    {
+                        Name = "ProfileName",
+                        Header = "SuperSecretHeader",
+                        Value = "SuperSecretValue"
+                    }
+                });
         ...
 }
 ```
+
+Note: Both configurations and profiles are not necessary. You can use one or the other or both.
 
 The invisible API configuration will give you the capability to configure multiple API endpoints, with multiple HttpVerbs all in one spot.
 
 You can also assign multiple headers and header values for the same API endpoint - whichever one is used will unveil your API endpoint.
 
+Alternatively you can setup invisible api profiles that can be used in conjunction with an InvisibleApi attribute to determine if the endpoint can be accessed based on one or many profiles setup.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class StudentsController : ControllerBase
+{
+    ...
+        [HttpPost]
+        [InvisibleApi("ProfileName")]
+        public ActionResult<string> Post() =>
+            Ok("Posted student data!");
+    ...
+}
+```
 
 ### Testing
 Now, if we hit the `GET api/home` endpoint with no specified Invisible API configurations the outcome would be as follows:
@@ -87,6 +113,8 @@ Now, if we hit the `GET api/home` endpoint with no specified Invisible API confi
 
 As you can see above, the API endpoint makes itself invisible (404 Not Found) if the header values are not provided, and then it shows itself if the configured header values are provided.
 
+#### Using Attributes (Visible)
+![image](attribute-success.jpg)
 
 ### Notice
 It's important to understand that the InvisibleApi mechanism doesn't replace the existing practices of security patterns - it's important to understand that it only adds an additional layer of security on existing API endpoints in case the token was compromised for whatever reason or the endpoint was discoverd through scanning or discovery.
