@@ -131,7 +131,7 @@ namespace InvisibleApi.Tests.Unit.Middlewares
                 {
                     new InvisibleApiConfiguration
                     {
-                        HttpVerb = GetRandomString(),
+                        HttpVerb = randomHttpVerb,
                         Endpoint = randomEndpoint,
                         Header = GetRandomString(),
                         Value = GetRandomString()
