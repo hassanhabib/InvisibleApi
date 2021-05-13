@@ -20,6 +20,7 @@ namespace InvisibleApi.Extensions
             List<InvisibleApiProfile> invisibleApiProfiles)
         {
             object[] parameters = { invisibleApiDetails, invisibleApiProfiles };
+
             return app.UseMiddleware<InvisibleApiMiddleware>(parameters);
         }
     }
