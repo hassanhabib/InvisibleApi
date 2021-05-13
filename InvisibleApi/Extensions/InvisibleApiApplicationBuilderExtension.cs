@@ -4,11 +4,11 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System.Collections.Generic;
 using InvisibleApi.Middlewares;
 using InvisibleApi.Models.InvisibleApiConfigurations;
 using InvisibleApi.Models.InvisibleApiProfiles;
 using Microsoft.AspNetCore.Builder;
+using System.Collections.Generic;
 
 namespace InvisibleApi.Extensions
 {
@@ -17,7 +17,10 @@ namespace InvisibleApi.Extensions
         public static IApplicationBuilder UseInvisibleApis(
             this IApplicationBuilder app,
             List<InvisibleApiConfiguration> invisibleApiDetails,
-            List<InvisibleApiProfile> invisibleApiProfiles) =>
-                app.UseMiddleware<InvisibleApiMiddleware>(invisibleApiDetails, invisibleApiProfiles);
+            List<InvisibleApiProfile> invisibleApiProfiles)
+        {
+            object[] parameters = { invisibleApiDetails, invisibleApiProfiles };
+            return app.UseMiddleware<InvisibleApiMiddleware>(parameters);
+        }
     }
 }

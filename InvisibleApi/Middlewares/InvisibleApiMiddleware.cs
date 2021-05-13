@@ -35,9 +35,7 @@ namespace InvisibleApi.Middlewares
             var endpoint = context.Features?.Get<IEndpointFeature>()?.Endpoint;
             var attribute = endpoint?.Metadata.GetMetadata<InvisibleApiAttribute>();
 
-            if (FailedConfigMatch(context.Request))
-                context.Response.StatusCode = StatusCodes.Status404NotFound;
-            else if (FailedProfileMatch(attribute, context.Request))
+            if (FailedConfigMatch(context.Request) || FailedProfileMatch(attribute, context.Request))
                 context.Response.StatusCode = StatusCodes.Status404NotFound;
             else
                 await next(context);
@@ -73,18 +71,16 @@ namespace InvisibleApi.Middlewares
 
             var hasMatchingProfile = false;
 
-            for (var aInd = 0; aInd < attribute.Profiles.Length; aInd++)
+            foreach (var profileName in attribute.Profiles)
             {
-                for (var pInd = 0; pInd < invisibleApiProfiles.Count; pInd++)
+                foreach (var profile in invisibleApiProfiles)
                 {
-                    if (invisibleApiProfiles[pInd].Name != attribute.Profiles[aInd])
+                    if (profile.Name != profileName)
                         continue;
 
                     hasMatchingProfile = true;
 
-                    var matchingProfile = invisibleApiProfiles[pInd];
-
-                    if (request.Headers[matchingProfile.Header] == matchingProfile.Value)
+                    if (request.Headers[profile.Header] == profile.Value)
                         return false;
                 }
             }
