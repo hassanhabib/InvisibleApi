@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvisibleApi", "InvisibleApi\InvisibleApi.csproj", "{75B02BE9-4EFB-4D7A-B09B-8387995DCDED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvisibleApi", "InvisibleApi\InvisibleApi.csproj", "{75B02BE9-4EFB-4D7A-B09B-8387995DCDED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvisibleApi.Tests.Unit", "InvisibleApi.Tests.Unit\InvisibleApi.Tests.Unit.csproj", "{FDE39D63-E694-4847-81AB-592022EF4A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvisibleApi.Tests.Unit", "InvisibleApi.Tests.Unit\InvisibleApi.Tests.Unit.csproj", "{FDE39D63-E694-4847-81AB-592022EF4A5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C74673A8-CEFB-4B33-9C93-0415BCE4A61E}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvisibleApi.Infrastructure.Build", "InvisibleApi.Infrastructure.Build\InvisibleApi.Infrastructure.Build.csproj", "{EA561D35-78C9-4BC3-8529-631DDE3A055A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{FDE39D63-E694-4847-81AB-592022EF4A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDE39D63-E694-4847-81AB-592022EF4A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDE39D63-E694-4847-81AB-592022EF4A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA561D35-78C9-4BC3-8529-631DDE3A055A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA561D35-78C9-4BC3-8529-631DDE3A055A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA561D35-78C9-4BC3-8529-631DDE3A055A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA561D35-78C9-4BC3-8529-631DDE3A055A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
