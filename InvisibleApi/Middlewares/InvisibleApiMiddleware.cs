@@ -43,15 +43,10 @@ namespace InvisibleApi.Middlewares
                 this.invisibleApiConfigurations.FirstOrDefault(apiDetails =>
                     apiDetails.Endpoint == request.Path
                     && apiDetails.HttpVerb == request.Method);
-
-            if (invisibleEndpointConfiguration is { Endpoint: string endpoint })
+            if (invisibleEndpointConfiguration is { Header: string key, Value: string value })
             {
-                return this.invisibleApiConfigurations.Any(configuration =>
-                    configuration.HttpVerb == request.Method
-                    && configuration.Endpoint == endpoint
-                    && request.Headers[configuration.Header] == configuration.Value);
+                return request.Headers[key] == value;
             }
-
             return true;
         }
     }
