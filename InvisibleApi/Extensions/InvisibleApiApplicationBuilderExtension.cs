@@ -14,7 +14,7 @@ namespace InvisibleApi.Extensions
     public static class InvisibleApiApplicationBuilderExtension
     {
         public static IApplicationBuilder UseInvisibleApis(
-            this IApplicationBuilder app, 
+            this IApplicationBuilder app,
             List<InvisibleApiConfiguration> invisibleApiDetails) =>
                 app.UseMiddleware<InvisibleApiMiddleware>(invisibleApiDetails);
     }
